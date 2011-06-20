@@ -1,0 +1,23 @@
+The Linux Standards Base requires that 3rd party software be installed
+under /opt/<makers identifier>/. This then needs some way of 
+conveniently making the executables available on the system's search 
+path and making necessary man pages accessible and also possibly
+libararies and header files. This is the job of autolink and it may be 
+invoked as simply as:
+#> autolink /opt/<maker>/ /usr/local/
+The effect will be that all files in directories under /opt/<maker> will
+be symlinked back from /usr/local/ and will therefore be automatically
+included in the bin and man search paths.
+
+Because the software provider may also install many header and library
+files which are only needed by folk who intend to further develop the
+installed software it is optionally possible to exclude selected sub-
+directories from being linked.
+
+It is easy to remove this installed software by simply:
+#> rm -rf /opt/<maker>
+Having done this step you will then be left with possibly a large number
+of dangling symlinks (broken symlinks) in /usr/local/. In that case they
+may be removed by:
+#> undangle /usr/local
+The program undangle is provided with together with autolink.
