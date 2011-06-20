@@ -1,0 +1,46 @@
+.TH AUTOLINK 1 "2011 June 21" Linux "Linux"
+
+.SH NAME
+autolink \- program program for automatically linking the content of one
+directory in another.
+
+.SH SYNOPSIS
+.B  
+autolink [option] path_name path_to_get_links
+.br
+
+.SH DESCRIPTION
+This manual page explains the
+.B autolink
+program. 
+.PP
+\fBautolink\fP is for generating links to one directory in another. 
+By default the links in the second directory will be symlinks.
+The program recursively descends the first directory and generates
+sub directories as required in the second directory. Finally the
+link to the files in the first directory is generated in the second.
+
+.SH OPTIONS
+-h - outputs a help message.
+.br
+-l - make hard links instead of symlinks.
+.br
+-s - make symlinks. This is the default.
+.br
+-e - sub-path to exclude from generating links.
+.br
+     This option may be repeated for as many sub-paths as required.
+
+
+.SH EXAMPLE
+autolink /opt/rlp1938/pdf2book/ /usr/local/
+.br
+symlinks will be created in /usr/local linking to the bin and man sub
+dirs in /opt/rlp1938/pdf2book/
+
+.SH "SEE ALSO"
+man undangle (1)
+ 
+.SH AUTHOR
+Robert L Parker <rlp1938@gmail.com>
+
